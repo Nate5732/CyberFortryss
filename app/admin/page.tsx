@@ -101,18 +101,26 @@ export default function AdminDashboard() {
     <div className="min-h-screen p-8 bg-gray-50 dark:bg-gray-900">
       <div className="max-w-7xl mx-auto">
         <header className="mb-8 flex justify-between items-center">
-          <div>
-            <h1 className="text-3xl font-semibold">Admin Dashboard</h1>
-            <p className="text-gray-500 mt-1">
-              {adminUser.townships?.name || 'Township'} - {adminUser.email}
-            </p>
-          </div>
-          <button
-            onClick={handleLogout}
-            className="px-4 py-2 bg-gray-200 dark:bg-gray-700 rounded hover:opacity-90"
-          >
-            Logout
-          </button>
+            <div>
+                <h1 className="text-3xl font-semibold">Admin Dashboard</h1>
+                <p className="text-gray-500 mt-1">
+                {adminUser.townships?.name || 'Township'} - {adminUser.email}
+                </p>
+            </div>
+            <div className="flex gap-3">
+                <button
+                onClick={() => router.push('/admin/assignments')}
+                className="px-4 py-2 bg-black text-white rounded hover:opacity-90"
+                >
+                Send Training Assignment
+                </button>
+                <button
+                onClick={handleLogout}
+                className="px-4 py-2 bg-gray-200 dark:bg-gray-700 rounded hover:opacity-90"
+                >
+                Logout
+                </button>
+            </div>
         </header>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
