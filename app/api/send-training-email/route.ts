@@ -10,7 +10,7 @@ export async function POST(request: Request) {
     const trainingUrl = `${process.env.NEXT_PUBLIC_SITE_URL}/training/take?token=${token}`
 
     const { data, error } = await resend.emails.send({
-      from: 'CyberFortRYSS <onboarding@resend.dev>', // Change this when you verify your domain
+      from: 'CyberFortRYSS <noreply@cyberfortryss.com>',
       to: email,
       subject: `${townshipName} - Cyber Awareness Training Assignment`,
       html: `
