@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { Suspense, useEffect, useState } from 'react'
 import { supabase } from '@/lib/supabaseClient'
 import { useSearchParams } from 'next/navigation'
 
@@ -26,7 +26,7 @@ interface Assignment {
   status: string
 }
 
-export default function TakeTrainingPage() {
+function TrainingContent() {
   const searchParams = useSearchParams()
   const token = searchParams.get('token')
   
@@ -263,5 +263,17 @@ export default function TakeTrainingPage() {
         </div>
       </div>
     </div>
+  )
+}
+
+export default function TakeTrainingPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900">
+        <p className="text-gray-500">Loading...</p>
+      </div>
+    }>
+      <TrainingContent />
+    </Suspense>
   )
 }
