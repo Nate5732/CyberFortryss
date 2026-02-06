@@ -89,9 +89,10 @@ export default function SignupPage() {
 
       if (profileError) {
         console.error('Profile creation error:', profileError)
-        // Continue anyway - user can still confirm email
+        setError(`Account created but profile failed: ${profileError.message}`)
+        setLoading(false)
+        return // Stop here so you can see the error
       }
-
       // Show success message
       setSuccess(true)
       setLoading(false)
