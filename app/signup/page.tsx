@@ -74,7 +74,23 @@ export default function SignupPage() {
         setLoading(false)
         return
       }
-  
+
+      // Create user profile in users table
+      const { error: profileError } = await supabase
+        .from('users')
+        .insert([
+          {
+            id: authData.user.id,
+            email: formData.email,
+            full_name: `${formData.firstName} ${formData.lastName}`,
+            role: 'user',
+          },
+        ])
+
+      if (profileError) {
+        console.error('Profile creation error:', profileError)
+        // Continue anyway - user can still confirm email
+      }
 
       // Show success message
       setSuccess(true)
