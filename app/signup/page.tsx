@@ -84,6 +84,7 @@ export default function SignupPage() {
             email: formData.email,
             full_name: `${formData.firstName} ${formData.lastName}`,
             role: 'user',
+            township_id: null, // Add this - users don't have a township until assigned
           },
         ])
 
